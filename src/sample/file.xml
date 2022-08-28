@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<class>
+    <Button value="Click on me" X="250" Y="300" />
+    <EditBox value="Click on editbox" X="280" Y="320" />
+    <TextBox value="Click on textbox" X="280" Y="350" />
+</class>

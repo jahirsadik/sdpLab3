@@ -4,12 +4,6 @@ import UIElements.IUIElemFactory;
 import UIElements.SimplisticUIElemFactory;
 
 public class WindowManager {
-    /*
-    - specificFactory: IUIElemFactory
-    - width: String
-    - height: String
-    - title: String
-    */
     IUIElemFactory specificFactory;
     private int width;
     private int height;
@@ -24,6 +18,12 @@ public class WindowManager {
     }
     private WindowManager(IUIElemFactory specificFactory){
         this.specificFactory = specificFactory;
+    }
+
+    public void loadUI(ConfigManager config){
+        while(config.hasMoreItems()){
+
+        }
     }
 
     //TODO: Setter functions need to refresh the UI

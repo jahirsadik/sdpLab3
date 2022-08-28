@@ -9,13 +9,13 @@ public class SimplisticUIElemFactory implements IUIElemFactory{
         String uiElemType = uiElemDescriptor.type;
         switch (uiElemType){
             case "Button":
-                control = new SimplisticButton();
+                control = new SimplisticButton(uiElemDescriptor.text, uiElemDescriptor.xCoordinate, uiElemDescriptor.yCoordinate);
                 break;
             case "EditBox":
-                control = new SimplisticEditBox();
+                control = new SimplisticEditBox(uiElemDescriptor.text, uiElemDescriptor.xCoordinate, uiElemDescriptor.yCoordinate);
                 break;
             case "TextBox":
-                control = new SimplisticTextBox();
+                control = new SimplisticTextBox(uiElemDescriptor.text, uiElemDescriptor.xCoordinate, uiElemDescriptor.yCoordinate);
                 break;
             default:
                 control = null;
