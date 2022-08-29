@@ -1,39 +1,71 @@
 package sample;
 
-import UIElements.UIElemDescriptor;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import java.io.File;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-import java.util.ArrayList;
+import UIElements.HighDetailedUIElemFactory;
+import UIElements.SimplisticUIElemFactory;
 
-public class Main extends Application {
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        Scene scene = new Scene(root, 300, 275);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-
+public class Main {
+    private final static String DEFAULT_CONFIG_FILE_XML = "src\\sample\\config.xml";
+    
     public static void main(String[] args) {
-        launch(args);
+        Scanner scanner = new Scanner(System.in);
+        WindowManager windowManager = null;
 
-        ArrayList<UIElemDescriptor> elemList = new ArrayList<>();
-        XMLParser.parseXML("src\\sample\\file.xml", elemList);
-        for (UIElemDescriptor elem: elemList
-        ) {
-            System.out.println(elem.toString());
-            if(elem.type.equals("Button")){
-                Button button = new Button(elem.text);
-                button.setLayoutX(elem.xCoordinate);
-                button.setLayoutY(elem.yCoordinate);
+        try {
+            System.out.println("Enter config file name: ");
+            String configFileName = scanner.nextLine().trim();
+
+            if (configFileName.equals("")) {
+                configFileName = DEFAULT_CONFIG_FILE_XML;
             }
+            
+            if (!(new File(configFileName).isFile())) {
+                throw new Exception("File not found.");
+            }
+
+            ConfigManager.getInstance(configFileName);
+            boolean breakFlag = false;
+
+            while (!breakFlag) {
+                try {
+                    System.out.println("Enter element style: ");
+                    System.out.println("1. Simplistic Design");
+                    System.out.println("2. High Detailed Design");
+                    int option = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (option) {
+                        case 1:
+                            windowManager = WindowManager.getInstance(new SimplisticUIElemFactory());
+                            breakFlag = true;
+                            break;
+                        case 2:
+                            windowManager = WindowManager.getInstance(new HighDetailedUIElemFactory());
+                            breakFlag = true;
+                            break;
+                        default:
+                            System.out.println("Invalid option");
+                            continue;
+                    }
+                } catch (InputMismatchException e) {
+                    scanner.next();
+                    System.out.println("Invalid option");
+                    continue;
+                }
+            }
+
+            Thread guiThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    WindowManager windowManager = WindowManager.getInstance(null);
+                    windowManager.execute(args); // it initialize the GUI of the program
+                }
+            });
+            guiThread.start();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
     }
