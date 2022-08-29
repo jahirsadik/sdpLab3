@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class ConfigManager implements IParser {
+public class ConfigManager {
     List<UIElemDescriptor> config = new ArrayList<>();
     Iterator<UIElemDescriptor> it = config.iterator();
 
@@ -22,24 +22,18 @@ public class ConfigManager implements IParser {
     }
     
     void loadConfigFile(String fileName) {
+
         if (fileName.endsWith(".txt")) {
-            ArrayList<String> configLines = new ArrayList<>();
             try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
+                ArrayList<String> configLines = new ArrayList<>();
                 stream.forEach(configLines::add);
-                loadConfig(configLines);
+                config.addAll(new TextParser().loadConfig(configLines));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         else if (fileName.endsWith(".xml")) {
             
-        }
-    }
-
-    @Override
-    public void loadConfig(List<String> configLines) {
-        for (String line : configLines) {
-            config.add(new UIElemDescriptor(line));
         }
     }
 }
