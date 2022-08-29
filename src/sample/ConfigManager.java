@@ -13,7 +13,6 @@ public class ConfigManager {
     private static ConfigManager ref = null;
 
     List<UIElemDescriptor> config = new ArrayList<>();
-    Iterator<UIElemDescriptor> it = config.iterator();
 
     private ConfigManager(String fileName) {
         loadConfigFile(fileName);
@@ -27,10 +26,12 @@ public class ConfigManager {
     }
 
     UIElemDescriptor nextItem(){
+        Iterator<UIElemDescriptor> it = config.iterator();
         return it.next();
     }
 
     boolean hasMoreItems(){
+        Iterator<UIElemDescriptor> it = config.iterator();
         return it.hasNext();
     }
     

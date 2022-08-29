@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class WindowManager extends Application {
+public class WindowManager {
     IUIElemFactory specificFactory;
     private int width = 1280;
     private int height = 720;
@@ -19,7 +19,8 @@ public class WindowManager extends Application {
         }
         return ref;
     }
-    private WindowManager(IUIElemFactory specificFactory){
+
+    public WindowManager(IUIElemFactory specificFactory){
         this.specificFactory = specificFactory;
     }
 
@@ -63,19 +64,5 @@ public class WindowManager extends Application {
 
     public String getTitle() {
         return title;
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        Pane root = new Pane();
-        loadUI(ConfigManager.getInstance(null), root);
-        Scene scene = new Scene(root, width, height);
-        stage.setTitle(title);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void execute(String[] args){
-        launch(args);
     }
 }

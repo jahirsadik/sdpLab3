@@ -15,7 +15,8 @@
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "sample.Main",
-            "projectName": "sdpLab3_8493568a"
+            "projectName": "sdpLab3_8493568a",
+            "vmArgs": "--module-path=lib --add-modules=javafx.controls"
         }
     ]
 }

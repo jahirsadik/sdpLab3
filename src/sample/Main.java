@@ -6,8 +6,12 @@ import java.util.Scanner;
 
 import UIElements.HighDetailedUIElemFactory;
 import UIElements.SimplisticUIElemFactory;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
     private final static String DEFAULT_CONFIG_FILE_XML = "src\\sample\\config.xml";
     
     public static void main(String[] args) {
@@ -55,18 +59,20 @@ public class Main {
                     continue;
                 }
             }
-
-            Thread guiThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    WindowManager windowManager = WindowManager.getInstance(null);
-                    windowManager.execute(args); // it initialize the GUI of the program
-                }
-            });
-            guiThread.start();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        launch(args);
+    }
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Pane root = new Pane();
+        WindowManager windowManager = WindowManager.getInstance(null);
+        windowManager.loadUI(ConfigManager.getInstance(null), root);
+        Scene scene = new Scene(root, windowManager.getWidth(), windowManager.getHeight());
+        primaryStage.setTitle(windowManager.getTitle());
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
