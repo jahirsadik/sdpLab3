@@ -10,10 +10,10 @@ import javafx.stage.Stage;
 
 public class WindowManager {
     IUIElemFactory specificFactory;
-    private int width = 1280;
-    private int height = 720;
+    private int width = 640;
+    private int height = 480;
     private String title = "Window";
-    public String color = "red";
+    public String childrenColor = "red";
     public int textSize = 14;
 
     private static WindowManager ref = null;
@@ -39,13 +39,13 @@ public class WindowManager {
         if(specificFactory.toString().equals("SimplisticUIElemFactory")){
             for (Node node:
                  root.getChildren()) {
-                node.setStyle(String.format("-fx-background-color: %s;", this.color));
+                node.setStyle(String.format("-fx-background-color: %s;", this.childrenColor));
             }
         }
         else{
             for (Node node:
                     root.getChildren()) {
-                node.setStyle(String.format("-fx-background-color: %s; -fx-font: %d arial;", this.color, this.textSize));
+                node.setStyle(String.format("-fx-background-color: %s; -fx-font: %d arial;", this.childrenColor, this.textSize));
             }
         }
     }

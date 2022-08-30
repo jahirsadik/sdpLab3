@@ -2,6 +2,7 @@ package sample;
 
 import java.io.File;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
 
 import UIElements.HighDetailedUIElemFactory;
@@ -65,17 +66,20 @@ public class Main extends Application {
             while (!breakFlag) {
                 if(windowManager.specificFactory.toString().equals("SimplisticUIElemFactory")){
                     System.out.println("Enter UI Element Color name:");
-                    // TODO: ADD COLOR CHECKER?
                     String colorName = scanner.nextLine().trim();
-                    windowManager.color = colorName;
+                    windowManager.childrenColor = colorName.toLowerCase();
                     breakFlag = true;
                 }else{
                     System.out.println("Enter UI Element Color name:");
                     // TODO: ADD COLOR CHECKER?
                     String colorName = scanner.nextLine().trim();
-                    windowManager.color = colorName;
+                    windowManager.childrenColor = colorName.toLowerCase();
                     System.out.println("Enter UI Element Text Size:");
                     int textSize = scanner.nextInt();
+                    if(textSize > 100 && textSize < 1){
+                        System.out.println("Input textSize too small/too big. Choosing default textSize 14");
+                        textSize = 14;
+                    }
                     windowManager.textSize = textSize;
                     breakFlag = true;
                 }
