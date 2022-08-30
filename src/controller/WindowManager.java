@@ -1,12 +1,8 @@
-package sample;
+package controller;
 
 import UIElements.IUIElemFactory;
-import javafx.application.Application;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 public class WindowManager {
     IUIElemFactory specificFactory;

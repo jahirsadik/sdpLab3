@@ -1,4 +1,4 @@
-package sample;
+package controller;
 
 import java.io.StringReader;
 import java.util.ArrayList;

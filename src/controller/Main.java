@@ -1,8 +1,7 @@
-package sample;
+package controller;
 
 import java.io.File;
 import java.util.InputMismatchException;
-import java.util.Locale;
 import java.util.Scanner;
 
 import UIElements.HighDetailedUIElemFactory;
@@ -10,11 +9,10 @@ import UIElements.SimplisticUIElemFactory;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private final static String DEFAULT_CONFIG_FILE_XML = "src\\sample\\config.xml";
+    private final static String DEFAULT_CONFIG_FILE_XML = "src\\controller\\config.xml";
 
     /* Main function takes terminal inputs before creating
     the window using selected style and config
