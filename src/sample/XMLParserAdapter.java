@@ -14,9 +14,15 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import UIElements.UIElemDescriptor;
-
+/*
+    This class (along with the interface) has been used to implement adapter pattern.
+    The system already had .txt config-line parsing capabilities and
+        now we've defined a common interface and an adapter that can adapter
+        new .xml file types
+ */
 public class XMLParserAdapter implements IParseToUIElem {
-
+    // Like TextParser, it reads each config line and after adapting to the
+    //      xml syntax, it creates UIElementDescriptions from those lines
     @Override
     public List<UIElemDescriptor> loadConfig(List<String> configLines) {
         ArrayList<UIElemDescriptor> config = new ArrayList<>();
@@ -27,7 +33,6 @@ public class XMLParserAdapter implements IParseToUIElem {
             InputSource is = new InputSource(new StringReader(xmlBody));
             Document doc = db.parse(is);
             doc.getDocumentElement().normalize();
-
             NodeList nList = doc.getDocumentElement().getChildNodes();
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node node = nList.item(temp);

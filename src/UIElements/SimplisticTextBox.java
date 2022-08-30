@@ -11,6 +11,6 @@ public class SimplisticTextBox extends Label implements ISimplisticUIElem{
     @Override
     public void changeColor(String color) {
         this.color = Color.web(color);
-        this.setStyle(String.format("-fx-background-color: #%s;", this.color.toString()));
+        this.setStyle(String.format("-fx-background-color: %s;", this.color.toString()));
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class XMLParser {
+    // reads each line from a .xml file and returns an array of string xml lines
     public static List<String> parseXML(String fileName) {
         ArrayList<String> xmlLines = new ArrayList<>();
         try (Stream<String> stream = Files.lines(Paths.get(fileName))) {

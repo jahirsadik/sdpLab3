@@ -3,6 +3,9 @@ package UIElements;
 import javafx.scene.control.Control;
 
 public class SimplisticUIElemFactory implements IUIElemFactory{
+    /* creates a JavaFx control object(UI node) from parsed UI Element Description
+        In this case, the created object follows simplistic style
+     */
     @Override
     public Control create(UIElemDescriptor uiElemDescriptor) throws Exception {
         Control control;

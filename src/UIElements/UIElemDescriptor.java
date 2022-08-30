@@ -24,7 +24,10 @@ public class UIElemDescriptor {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
     }
-
+    /*
+     method to parse out info about UIElements from a config line,
+        like the ones given in problem statement
+     */
     public UIElemDescriptor(String configLine) {
         String[] config = configLine.split(",");
         this.type = config[0];

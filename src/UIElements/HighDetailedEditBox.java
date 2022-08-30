@@ -13,7 +13,7 @@ public class HighDetailedEditBox extends TextField implements IHighDetailedUIEle
     @Override
     public void changeColor(String color) {
         this.color = Color.web(color);
-        this.setStyle(String.format("-fx-background-color: #%s;", this.color.toString()));
+        this.setStyle(String.format("-fx-background-color: %s;", this.color.toString()));
     }
 
     @Override

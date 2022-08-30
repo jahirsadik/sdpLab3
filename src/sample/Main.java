@@ -15,7 +15,10 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     private final static String DEFAULT_CONFIG_FILE_XML = "src\\sample\\config.xml";
-    
+
+    /* Main function takes terminal inputs before creating
+    the window using selected style and config
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         WindowManager windowManager = null;
@@ -71,12 +74,12 @@ public class Main extends Application {
                     breakFlag = true;
                 }else{
                     System.out.println("Enter UI Element Color name:");
-                    // TODO: ADD COLOR CHECKER?
                     String colorName = scanner.nextLine().trim();
                     windowManager.childrenColor = colorName.toLowerCase();
                     System.out.println("Enter UI Element Text Size:");
                     int textSize = scanner.nextInt();
-                    if(textSize > 100 && textSize < 1){
+                    // Restrict the text size so that it fits in the window
+                    if(textSize > windowManager.getHeight() || textSize < 1){
                         System.out.println("Input textSize too small/too big. Choosing default textSize 14");
                         textSize = 14;
                     }
@@ -84,6 +87,7 @@ public class Main extends Application {
                     breakFlag = true;
                 }
             }
+            // launch the javafx application
             launch(args);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -91,12 +95,14 @@ public class Main extends Application {
         
     }
 
+    // Javafx application start method
     @Override
     public void start(Stage primaryStage) throws Exception {
         Pane root = new Pane();
         WindowManager windowManager = WindowManager.getInstance(null);
         windowManager.loadUI(ConfigManager.getInstance(null), root);
         Scene scene = new Scene(root, windowManager.getWidth(), windowManager.getHeight());
+        root.setStyle("-fx-background-color: gray");
         primaryStage.setTitle(windowManager.getTitle());
         primaryStage.setScene(scene);
         primaryStage.show();

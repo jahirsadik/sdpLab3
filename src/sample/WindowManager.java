@@ -15,8 +15,11 @@ public class WindowManager {
     private String title = "Window";
     public String childrenColor = "red";
     public int textSize = 14;
-
+    /* WindowManager is a Singleton class,
+         ref holds the value of currently initiated ConfigManager reference
+     */
     private static WindowManager ref = null;
+    // getInstance ensures that the class follows Singleton pattern
     public static synchronized WindowManager getInstance(IUIElemFactory specificFactory){
         if(ref == null){
             ref = new WindowManager(specificFactory);
@@ -24,10 +27,15 @@ public class WindowManager {
         return ref;
     }
 
-    public WindowManager(IUIElemFactory specificFactory){
+    private WindowManager(IUIElemFactory specificFactory){
         this.specificFactory = specificFactory;
     }
-
+    /*
+        This method iteratively takes UI element descriptions from the config file
+            and displays the elements in the GUI.
+        After loading the UI elements, it goes through them one by one and applies
+            the style depending on the style selected by the user
+     */
     public void loadUI(ConfigManager config, Pane root) {
         while(config.hasMoreItems()){
             try {
