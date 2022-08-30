@@ -2,8 +2,10 @@ package sample;
 
 import UIElements.IUIElemFactory;
 import javafx.application.Application;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class WindowManager {
@@ -11,6 +13,8 @@ public class WindowManager {
     private int width = 1280;
     private int height = 720;
     private String title = "Window";
+    public String color = "red";
+    public int textSize = 14;
 
     private static WindowManager ref = null;
     public static synchronized WindowManager getInstance(IUIElemFactory specificFactory){
@@ -30,6 +34,18 @@ public class WindowManager {
                 root.getChildren().add(specificFactory.create(config.nextItem()));
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+        }
+        if(specificFactory.toString().equals("SimplisticUIElemFactory")){
+            for (Node node:
+                 root.getChildren()) {
+                node.setStyle(String.format("-fx-background-color: %s;", this.color));
+            }
+        }
+        else{
+            for (Node node:
+                    root.getChildren()) {
+                node.setStyle(String.format("-fx-background-color: %s; -fx-font: %d arial;", this.color, this.textSize));
             }
         }
     }

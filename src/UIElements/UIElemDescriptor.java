@@ -1,5 +1,7 @@
 package UIElements;
 
+import javafx.scene.paint.Color;
+
 public class UIElemDescriptor {
     public String type;
     public String text;

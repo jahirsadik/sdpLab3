@@ -22,4 +22,9 @@ public class HighDetailedUIElemFactory implements IUIElemFactory{
         }
         return control;
     }
+
+    @Override
+    public String toString() {
+        return "HighDetailedUIElemFactory";
+    }
 }

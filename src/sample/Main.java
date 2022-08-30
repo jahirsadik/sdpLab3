@@ -23,12 +23,12 @@ public class Main extends Application {
             System.out.println("Enter config file name: ");
             String configFileName = scanner.nextLine().trim();
 
-            if (configFileName.equals("")) {
-                configFileName = DEFAULT_CONFIG_FILE_XML;
-            }
-            
             if (!(new File(configFileName).isFile())) {
-                throw new Exception("File not found.");
+                configFileName = DEFAULT_CONFIG_FILE_XML;
+                System.out.println("File not found. Loading Default config.xml file");
+                if(!(new File(configFileName).isFile())){
+                    throw new Exception("File not found.");
+                }
             }
 
             ConfigManager.getInstance(configFileName);
@@ -59,6 +59,25 @@ public class Main extends Application {
                     scanner.next();
                     System.out.println("Invalid option");
                     continue;
+                }
+            }
+            breakFlag = false;
+            while (!breakFlag) {
+                if(windowManager.specificFactory.toString().equals("SimplisticUIElemFactory")){
+                    System.out.println("Enter UI Element Color name:");
+                    // TODO: ADD COLOR CHECKER?
+                    String colorName = scanner.nextLine().trim();
+                    windowManager.color = colorName;
+                    breakFlag = true;
+                }else{
+                    System.out.println("Enter UI Element Color name:");
+                    // TODO: ADD COLOR CHECKER?
+                    String colorName = scanner.nextLine().trim();
+                    windowManager.color = colorName;
+                    System.out.println("Enter UI Element Text Size:");
+                    int textSize = scanner.nextInt();
+                    windowManager.textSize = textSize;
+                    breakFlag = true;
                 }
             }
             launch(args);

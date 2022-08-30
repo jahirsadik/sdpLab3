@@ -23,4 +23,8 @@ public class SimplisticUIElemFactory implements IUIElemFactory{
         }
         return control;
     }
+    @Override
+    public String toString() {
+        return "SimplisticUIElemFactory";
+    }
 }
