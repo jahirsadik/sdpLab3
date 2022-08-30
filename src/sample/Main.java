@@ -9,6 +9,7 @@ import UIElements.SimplisticUIElemFactory;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -31,6 +32,7 @@ public class Main extends Application {
             }
 
             ConfigManager.getInstance(configFileName);
+
             boolean breakFlag = false;
 
             while (!breakFlag) {
@@ -59,10 +61,11 @@ public class Main extends Application {
                     continue;
                 }
             }
+            launch(args);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        launch(args);
+        
     }
 
     @Override

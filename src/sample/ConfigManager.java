@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class ConfigManager {
     private static ConfigManager ref = null;
 
-    List<UIElemDescriptor> config = new ArrayList<>();
+    private List<UIElemDescriptor> config = new ArrayList<>();
 
     private ConfigManager(String fileName) {
         loadConfigFile(fileName);
@@ -25,17 +25,19 @@ public class ConfigManager {
         return ref;
     }
 
-    UIElemDescriptor nextItem(){
+    public UIElemDescriptor nextItem(){
         Iterator<UIElemDescriptor> it = config.iterator();
-        return it.next();
+        UIElemDescriptor elem = it.next();
+        it.remove();
+        return elem;
     }
 
-    boolean hasMoreItems(){
+    public boolean hasMoreItems(){
         Iterator<UIElemDescriptor> it = config.iterator();
         return it.hasNext();
     }
     
-    void loadConfigFile(String fileName) {
+    private void loadConfigFile(String fileName) {
         IParseToUIElem parser;
         if (fileName.endsWith(".txt")) {
             try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
