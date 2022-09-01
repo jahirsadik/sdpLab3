@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main028_032 extends Application {
-    private final static String DEFAULT_CONFIG_FILE_XML = "src\\controller\\config.xml";
+    private final static String DEFAULT_CONFIG_FILE_XML = "config.xml";
 
     /* Main028_032 function takes terminal inputs before creating
     the window using selected style and config
