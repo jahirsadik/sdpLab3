@@ -1,9 +1,8 @@
-package UIElements;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-public class SimplisticTextBox extends Label implements ISimplisticUIElem{
+public class SimplisticTextBox028_032 extends Label implements ISimplisticUIElem028_032 {
     private Color color;
-    SimplisticTextBox(String text, double xCoordinate, double yCoordinate){
+    SimplisticTextBox028_032(String text, double xCoordinate, double yCoordinate){
         super(text);
         this.setLayoutX(xCoordinate);
         this.setLayoutY(yCoordinate);

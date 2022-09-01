@@ -1,5 +1,3 @@
-package controller;
-
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +11,18 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-import UIElements.UIElemDescriptor;
 /*
     This class (along with the interface) has been used to implement adapter pattern.
     The system already had .txt config-line parsing capabilities and
         now we've defined a common interface and an adapter that can adapter
         new .xml file types
  */
-public class XMLParserAdapter implements IParseToUIElem {
-    // Like TextParser, it reads each config line and after adapting to the
+public class XMLParserAdapter028_032 implements IParseToUIElem028_032 {
+    // Like TextParser028_032, it reads each config line and after adapting to the
     //      xml syntax, it creates UIElementDescriptions from those lines
     @Override
-    public List<UIElemDescriptor> loadConfig(List<String> configLines) {
-        ArrayList<UIElemDescriptor> config = new ArrayList<>();
+    public List<UIElemDescriptor028_032> loadConfig(List<String> configLines) {
+        ArrayList<UIElemDescriptor028_032> config = new ArrayList<>();
         try {
             String xmlBody = String.join("", configLines);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -43,7 +40,7 @@ public class XMLParserAdapter implements IParseToUIElem {
                     stringBuilder.append(elem.getAttribute("value") + ",");
                     stringBuilder.append("X:" + elem.getAttribute("X") + ",");
                     stringBuilder.append("Y:" + elem.getAttribute("Y"));
-                    config.add(new UIElemDescriptor(stringBuilder.toString()));
+                    config.add(new UIElemDescriptor028_032(stringBuilder.toString()));
                 }
             }
         }

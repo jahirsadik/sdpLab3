@@ -1,12 +1,11 @@
-package UIElements;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 
-public class HighDetailedTextBox extends Label implements IHighDetailedUIElem{
+public class HighDetailedButton028_032 extends Button implements IHighDetailedUIElem028_032 {
     private Color color;
     private double textSize;
 
-    HighDetailedTextBox(String text, double xCoordinate, double yCoordinate){
+    HighDetailedButton028_032(String text, double xCoordinate, double yCoordinate){
         super(text);
         this.setLayoutX(xCoordinate);
         this.setLayoutY(yCoordinate);

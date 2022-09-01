@@ -1,29 +1,26 @@
-package controller;
-
-import UIElements.IUIElemFactory;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
-public class WindowManager {
-    IUIElemFactory specificFactory;
+public class WindowManager028_032 {
+    IUIElemFactory028_032 specificFactory;
     private int width = 640;
     private int height = 480;
     private String title = "Window";
     public String childrenColor = "red";
     public int textSize = 14;
-    /* WindowManager is a Singleton class,
-         ref holds the value of currently initiated ConfigManager reference
+    /* WindowManager028_032 is a Singleton class,
+         ref holds the value of currently initiated ConfigManager028_032 reference
      */
-    private static WindowManager ref = null;
+    private static WindowManager028_032 ref = null;
     // getInstance ensures that the class follows Singleton pattern
-    public static synchronized WindowManager getInstance(IUIElemFactory specificFactory){
+    public static synchronized WindowManager028_032 getInstance(IUIElemFactory028_032 specificFactory){
         if(ref == null){
-            ref = new WindowManager(specificFactory);
+            ref = new WindowManager028_032(specificFactory);
         }
         return ref;
     }
 
-    private WindowManager(IUIElemFactory specificFactory){
+    private WindowManager028_032(IUIElemFactory028_032 specificFactory){
         this.specificFactory = specificFactory;
     }
     /*
@@ -32,7 +29,7 @@ public class WindowManager {
         After loading the UI elements, it goes through them one by one and applies
             the style depending on the style selected by the user
      */
-    public void loadUI(ConfigManager config, Pane root) {
+    public void loadUI(ConfigManager028_032 config, Pane root) {
         while(config.hasMoreItems()){
             try {
                 root.getChildren().add(specificFactory.create(config.nextItem()));
@@ -40,7 +37,7 @@ public class WindowManager {
                 e.printStackTrace();
             }
         }
-        if(specificFactory.toString().equals("SimplisticUIElemFactory")){
+        if(specificFactory.toString().equals("SimplisticUIElemFactory028_032")){
             for (Node node:
                  root.getChildren()) {
                 node.setStyle(String.format("-fx-background-color: %s;", this.childrenColor));
@@ -54,7 +51,7 @@ public class WindowManager {
         }
     }
     
-    public void setSpecificFactory(IUIElemFactory specificFactory) {
+    public void setSpecificFactory(IUIElemFactory028_032 specificFactory) {
         this.specificFactory = specificFactory;
     }
 
@@ -70,7 +67,7 @@ public class WindowManager {
         this.title = title;
     }
 
-    public IUIElemFactory getSpecificFactory() {
+    public IUIElemFactory028_032 getSpecificFactory() {
         return specificFactory;
     }
 

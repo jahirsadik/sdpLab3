@@ -1,25 +1,21 @@
-package controller;
-
 import java.io.File;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import UIElements.HighDetailedUIElemFactory;
-import UIElements.SimplisticUIElemFactory;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class Main028_032 extends Application {
     private final static String DEFAULT_CONFIG_FILE_XML = "src\\controller\\config.xml";
 
-    /* Main function takes terminal inputs before creating
+    /* Main028_032 function takes terminal inputs before creating
     the window using selected style and config
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        WindowManager windowManager = null;
+        WindowManager028_032 windowManager = null;
 
         try {
             System.out.println("Enter config file name: ");
@@ -33,7 +29,7 @@ public class Main extends Application {
                 }
             }
 
-            ConfigManager.getInstance(configFileName);
+            ConfigManager028_032.getInstance(configFileName);
 
             boolean breakFlag = false;
 
@@ -46,11 +42,11 @@ public class Main extends Application {
                     scanner.nextLine();
                     switch (option) {
                         case 1:
-                            windowManager = WindowManager.getInstance(new SimplisticUIElemFactory());
+                            windowManager = WindowManager028_032.getInstance(new SimplisticUIElemFactory028_032());
                             breakFlag = true;
                             break;
                         case 2:
-                            windowManager = WindowManager.getInstance(new HighDetailedUIElemFactory());
+                            windowManager = WindowManager028_032.getInstance(new HighDetailedUIElemFactory028_032());
                             breakFlag = true;
                             break;
                         default:
@@ -65,7 +61,7 @@ public class Main extends Application {
             }
             breakFlag = false;
             while (!breakFlag) {
-                if(windowManager.specificFactory.toString().equals("SimplisticUIElemFactory")){
+                if(windowManager.specificFactory.toString().equals("SimplisticUIElemFactory028_032")){
                     System.out.println("Enter UI Element Color name:");
                     String colorName = scanner.nextLine().trim();
                     windowManager.childrenColor = colorName.toLowerCase();
@@ -97,8 +93,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Pane root = new Pane();
-        WindowManager windowManager = WindowManager.getInstance(null);
-        windowManager.loadUI(ConfigManager.getInstance(null), root);
+        WindowManager028_032 windowManager = WindowManager028_032.getInstance(null);
+        windowManager.loadUI(ConfigManager028_032.getInstance(null), root);
         Scene scene = new Scene(root, windowManager.getWidth(), windowManager.getHeight());
         root.setStyle("-fx-background-color: gray");
         primaryStage.setTitle(windowManager.getTitle());

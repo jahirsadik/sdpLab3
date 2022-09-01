@@ -1,10 +1,9 @@
-package UIElements;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-public class SimplisticEditBox extends TextField implements ISimplisticUIElem{
+public class SimplisticEditBox028_032 extends TextField implements ISimplisticUIElem028_032 {
     private Color color;
-    SimplisticEditBox(String text, double xCoordinate, double yCoordinate){
+    SimplisticEditBox028_032(String text, double xCoordinate, double yCoordinate){
         super(text);
         this.setLayoutX(xCoordinate);
         this.setLayoutY(yCoordinate);

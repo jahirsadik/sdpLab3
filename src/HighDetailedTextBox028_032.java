@@ -1,15 +1,16 @@
-package UIElements;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
-public class HighDetailedEditBox extends TextField implements IHighDetailedUIElem{
+public class HighDetailedTextBox028_032 extends Label implements IHighDetailedUIElem028_032 {
     private Color color;
     private double textSize;
-    HighDetailedEditBox(String text, double xCoordinate, double yCoordinate){
+
+    HighDetailedTextBox028_032(String text, double xCoordinate, double yCoordinate){
         super(text);
         this.setLayoutX(xCoordinate);
         this.setLayoutY(yCoordinate);
     }
+
     @Override
     public void changeColor(String color) {
         this.color = Color.web(color);

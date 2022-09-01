@@ -1,8 +1,6 @@
-package UIElements;
-
 import javafx.scene.paint.Color;
 
-public class UIElemDescriptor {
+public class UIElemDescriptor028_032 {
     public String type;
     public String text;
     public double xCoordinate;
@@ -10,7 +8,7 @@ public class UIElemDescriptor {
 
     @Override
     public String toString() {
-        return "UIElemDescriptor{" +
+        return "UIElemDescriptor028_032{" +
                 "type='" + type + '\'' +
                 ", text='" + text + '\'' +
                 ", xCoordinate=" + xCoordinate +
@@ -18,7 +16,7 @@ public class UIElemDescriptor {
                 '}';
     }
 
-    public UIElemDescriptor(String type, String text, double xCoordinate, double yCoordinate) {
+    public UIElemDescriptor028_032(String type, String text, double xCoordinate, double yCoordinate) {
         this.type = type;
         this.text = text;
         this.xCoordinate = xCoordinate;
@@ -28,7 +26,7 @@ public class UIElemDescriptor {
      method to parse out info about UIElements from a config line,
         like the ones given in problem statement
      */
-    public UIElemDescriptor(String configLine) {
+    public UIElemDescriptor028_032(String configLine) {
         String[] config = configLine.split(",");
         this.type = config[0];
         this.text = config[1];

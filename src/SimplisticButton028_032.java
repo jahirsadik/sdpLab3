@@ -1,10 +1,9 @@
-package UIElements;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 
-public class SimplisticButton extends Button implements ISimplisticUIElem{
+public class SimplisticButton028_032 extends Button implements ISimplisticUIElem028_032 {
     private Color color;
-    SimplisticButton(String text, double xCoordinate, double yCoordinate){
+    SimplisticButton028_032(String text, double xCoordinate, double yCoordinate){
         super(text);
         this.setLayoutX(xCoordinate);
         this.setLayoutY(yCoordinate);
